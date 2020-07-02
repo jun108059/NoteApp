@@ -30,7 +30,7 @@ public class NoteDatabase extends SQLiteOpenHelper {
                 KEY_TITLE + " TEXT," +
                 KEY_CONTENT + " TEXT," +
                 KEY_DATE + " TEXT," +
-                KEY_TIME + " TEXT," + ")";
+                KEY_TIME + " TEXT" + ")";
         db.execSQL(query);
         // 쿼리를 통한 DB 생성하는 코드
 
@@ -38,7 +38,10 @@ public class NoteDatabase extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+        // Upgrade 코드 작성
+        if(oldVersion >= newVersion) return;
+        db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE);
+        onCreate(db);
     }
 
 }
