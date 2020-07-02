@@ -8,11 +8,18 @@
 
     <EditText
         android:id="@+id/editText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="633dp"
+        android:layout_marginStart="21dp"
+        android:layout_marginEnd="21dp"
+        android:layout_marginBottom="28dp"
         android:ems="10"
         android:gravity="start|top"
+        android:importantForAutofill="no"
         android:inputType="textMultiLine"
-        tools:layout_editor_absoluteX="73dp"
-        tools:layout_editor_absoluteY="156dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="LabelFor"
+        tools:targetApi="o" />
 </androidx.constraintlayout.widget.ConstraintLayout>
