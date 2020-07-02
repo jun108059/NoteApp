@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
         ListView listView = (ListView) findViewById(R.id.listView);
 
-        notes.add("Example note");
+        notes.add("영준 메모장 어플");
 
         ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, notes);
 
