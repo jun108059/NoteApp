@@ -1,8 +1,10 @@
 package com.dev_youngjun.yj_noteapp;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -62,6 +64,28 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), NoteEditorActivity.class);
                 intent.putExtra("noteId", position);
                 startActivity(intent);
+            }
+        });
+        // 길게 누르면 Delete
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+
+                new AlertDialog.Builder(MainActivity.this)
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .setTitle("확실히 지울까요?")
+                        .setMessage("이 메모를 삭제할래요?")
+                        .setPositiveButton("네!", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        notes.remove(which);
+                                        arrayAdapter.notifyDataSetChanged();
+                                    }
+                                }
+                        )
+                        .setNegativeButton("아니요!", null)
+                        .show();
+                return true;
             }
         });
 
