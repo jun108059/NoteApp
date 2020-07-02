@@ -71,6 +71,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
 
+                final int itemToDelete = position;
+
                 new AlertDialog.Builder(MainActivity.this)
                         .setIcon(android.R.drawable.ic_dialog_alert)
                         .setTitle("확실히 지울까요?")
@@ -78,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
                         .setPositiveButton("네!", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        notes.remove(which);
+                                        notes.remove(itemToDelete);
                                         arrayAdapter.notifyDataSetChanged();
                                     }
                                 }
