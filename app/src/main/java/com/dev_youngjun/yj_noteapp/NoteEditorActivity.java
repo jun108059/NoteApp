@@ -18,7 +18,7 @@ public class NoteEditorActivity extends AppCompatActivity {
         EditText editText = (EditText) findViewById(R.id.editText);
 
         Intent intent = getIntent();
-        int noteId = intent.getIntExtra("noteId", -1);
+        final int noteId = intent.getIntExtra("noteId", -1);
 
         // noteId가 할당된다면 setText 엑션
         if (noteId != -1) {
@@ -33,7 +33,8 @@ public class NoteEditorActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
+                MainActivity.notes.set(noteId, String.valueOf(s));
+                MainActivity.arrayAdapter.notifyDataSetChanged();
             }
 
             @Override
