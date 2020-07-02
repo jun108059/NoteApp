@@ -10,6 +10,8 @@ import android.widget.EditText;
 
 public class NoteEditorActivity extends AppCompatActivity {
 
+    int noteId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,11 +20,16 @@ public class NoteEditorActivity extends AppCompatActivity {
         EditText editText = (EditText) findViewById(R.id.editText);
 
         Intent intent = getIntent();
-        final int noteId = intent.getIntExtra("noteId", -1);
+        noteId = intent.getIntExtra("noteId", -1);
 
         // noteId가 할당된다면 setText 엑션
         if (noteId != -1) {
             editText.setText(MainActivity.notes.get(noteId));
+        }
+        else {
+            MainActivity.notes.add(""); // 빈 노트
+            noteId = MainActivity.notes.size() - 1;
+            MainActivity.arrayAdapter.notifyDataSetChanged();
         }
 
         editText.addTextChangedListener(new TextWatcher() {
