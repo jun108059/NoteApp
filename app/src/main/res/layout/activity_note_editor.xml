@@ -22,5 +22,6 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="LabelFor"
+        android:background="#ffffff"
         tools:targetApi="o" />
 </androidx.constraintlayout.widget.ConstraintLayout>
